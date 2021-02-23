@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import Like from "./common/like";
+import Pagination from "./common/pagination";
 
 class Movies extends Component {
   state = {
     movies: getMovies(),
+    pageSize: 4,
   };
 
   handleDelete = (movie) => {
@@ -20,6 +22,10 @@ class Movies extends Component {
     this.setState({ movies });
   };
 
+  handlePageChange = (page) => {
+    console.log(page);
+  };
+
   render() {
     const { length: count } = this.state.movies;
 
@@ -28,8 +34,7 @@ class Movies extends Component {
     return (
       <>
         <h5>Showing {this.state.movies.length} movies in the database.</h5>
-        <hr />
-        <table className="table table-dark">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Title</th>
@@ -68,6 +73,11 @@ class Movies extends Component {
             })}
           </tbody>
         </table>
+        <Pagination
+          itemsCount={count}
+          pageSize={this.state.pageSize}
+          onPageChange={this.handlePageChange}
+        />
       </>
     );
   }
