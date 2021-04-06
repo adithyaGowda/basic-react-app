@@ -7,10 +7,10 @@ const Like = (props) => {
     <i
       onClick={props.onClick}
       style={{ cursor: "pointer" }}
-      className={classes}
+      className={classes + " clickable"}
       aria-hidden="true"
     ></i>
   );
-}
- 
+};
+
 export default Like;
