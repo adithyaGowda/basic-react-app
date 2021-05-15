@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <>
         <ToastContainer />
-        <NavBar user={this.state.data} />
+        <NavBar user={this.state.user} />
         <main className="container">
           <Switch>
             <Route path="/register" component={RegisterForm} />
